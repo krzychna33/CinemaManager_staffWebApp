@@ -8,8 +8,8 @@ export default class ShowingForm extends React.Component {
         super();
         this.state = {
             showingId: props.showing ? props.showing.id : '',
-            startTime: props.showing ? props.showing.showingTime : moment(),
-            endTime: props.showing ? props.showing.showingEndTime : moment().add(2, 'hours'),
+            startTime: props.showing ? moment(props.showing.showingTime) : moment(),
+            endTime: props.showing ? moment(props.showing.showingEndTime) : moment().add(2, 'hours'),
             price: props.showing ? (props.showing.price/100).toString() : '',
             movieId: props.showing ? props.showing.movie_id : 1
         }
@@ -38,6 +38,13 @@ export default class ShowingForm extends React.Component {
         }
     }
 
+    onMovieChange = (e) => {
+        const selectFieldValue = e.target.value;
+        this.setState(() => ({
+            movieId: selectFieldValue
+        }))
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
 
@@ -45,7 +52,7 @@ export default class ShowingForm extends React.Component {
             movie_id: this.state.movieId,
             showingEndTime: this.state.endTime.format("YYYY-MM-DD HH:mm:ss"),
             showingTime: this.state.startTime.format("YYYY-MM-DD HH:mm:ss"),
-            price: parseInt(this.state.price, 10) * 100
+            price: parseFloat(this.state.price, 10) * 100
         })
     }
 
@@ -65,12 +72,9 @@ export default class ShowingForm extends React.Component {
                         value={this.state.endTime}
                         onChange={this.onEndTimeChange}
                     />
-                    <select>
+                    <select value={this.state.movieId} onChange={this.onMovieChange}>
                         {this.props.movies.map((movie) => {
-                            if(movie.id === this.state.movie_id){
-                                return <option key={movie.id} selected>{movie.title}</option>
-                            }
-                            return <option key={movie.id}>{movie.title}</option>
+                            return <option key={movie.id} value={movie.id}>{movie.title}</option>
                         })}
                     </select>
                     <input

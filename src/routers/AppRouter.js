@@ -4,7 +4,8 @@ import { Router, Route, Switch, Link, NavLink} from 'react-router-dom';
 import Header from '../components/Header';
 import MoviesList from '../components/MoviesList';
 import Dashboard from '../components/Dashboard';
-import AddShowingPage from '../components/AddShowingPage'
+import AddShowingPage from '../components/showings/AddShowingPage'
+import EditShowingPage from '../components/showings/EditShowingPage'
 
 export const history = createHistory();
 
@@ -17,6 +18,7 @@ const AppRouter = () => (
                 <Route path="/" component={Dashboard} exact={true}/>
                 <Route path="/movies" component={MoviesList}/>
                 <Route path="/add-showing" component={AddShowingPage}/>
+                <Route path="/edit-showing/:id" component={EditShowingPage}/>
             </Switch>
         </div>
     </Router>

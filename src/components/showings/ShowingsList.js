@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import selectShowings from '../selectors/showings';
+import selectShowings from '../../selectors/showings';
 import ShowingItem from './ShowingItem';
 
 const ShowingsList = (props) => (
@@ -12,6 +12,7 @@ const ShowingsList = (props) => (
                     <th>ID</th>
                     <th>Movie title</th>
                     <th>Showing time</th>
+                    <th>Price</th>
                     <th>Edit</th>
                     <th>Remove</th>
                 </tr>

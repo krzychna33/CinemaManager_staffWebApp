@@ -5,9 +5,9 @@ const getMovies = (movies) => ({
     movies
 });
 
-const startGetMovies = () => {
+export const startGetMovies = () => {
     return (dispatch) => {
-        axiosInstance.get('/movies').then((res) => {
+        return axiosInstance.get('/movies').then((res) => {
             dispatch(getMovies(res.data));
         })
     }
