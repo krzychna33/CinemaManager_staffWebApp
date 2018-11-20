@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {startGetMovies} from '../actions/movies';
+import {startAddShowing} from '../actions/showings';
 import axiosInstance from '../config/axios';
 import ShowingForm from './ShowingForm';
 
-export default class AddShowingPage extends React.Component {
+export class AddShowingPage extends React.Component {
     constructor(props){
         super();
         this.state = {
@@ -20,20 +20,29 @@ export default class AddShowingPage extends React.Component {
         })
     }
 
+    onSubmit = (showing) => {
+        this.props.startAddShowing(showing).then(() => {
+            console.log('Success!');
+            this.props.history.push('/');
+        }).catch(() => {
+            console.log('Error while adding to the db')
+        })
+    }
+
     render(){
         return(
             <div>
                 <h1>Add new showing</h1>
-                <ShowingForm movies={this.state.movies}/>
+                <ShowingForm movies={this.state.movies} onSubmit={this.onSubmit}/>
             </div>
         )
     }
 }
 
-// const mapDisptachToProps = (dispatch) => {
-//     return {
-//         startGetMovies: dispatch(startGetMovies())
-//     }
-// }
+const mapDisptachToProps = (dispatch) => {
+    return {
+        startAddShowing: (showing) => dispatch(startAddShowing(showing))
+    }
+}
 
-// export default connect(undefined, mapDisptachToProps)(AddShowingPage)
+export default connect(undefined, mapDisptachToProps)(AddShowingPage)
