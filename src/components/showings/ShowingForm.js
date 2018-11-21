@@ -1,7 +1,6 @@
 import React from 'react';
 import { DateTimePicker } from 'material-ui-pickers';
 import moment from 'moment';
-import { runInThisContext } from 'vm';
 
 export default class ShowingForm extends React.Component {
     constructor(props){
@@ -48,12 +47,16 @@ export default class ShowingForm extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
 
-        this.props.onSubmit({
-            movie_id: this.state.movieId,
-            showingEndTime: this.state.endTime.format("YYYY-MM-DD HH:mm:ss"),
-            showingTime: this.state.startTime.format("YYYY-MM-DD HH:mm:ss"),
-            price: parseFloat(this.state.price, 10) * 100
-        })
+        if(!this.state.price){
+            this.props.onSubmit(undefined, 'You have to set price.')
+        } else {
+            this.props.onSubmit({
+                movie_id: this.state.movieId,
+                showingEndTime: this.state.endTime.format("YYYY-MM-DD HH:mm:ss"),
+                showingTime: this.state.startTime.format("YYYY-MM-DD HH:mm:ss"),
+                price: parseFloat(this.state.price, 10) * 100
+            })
+        }
     }
 
     render(){

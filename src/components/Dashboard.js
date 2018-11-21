@@ -6,6 +6,7 @@ import {startGetShowings} from '../actions/showings'
 
 
 class Dashboard extends React.Component{
+    _isMounted = false;
     constructor(){
         super();
         this.state = {
@@ -14,9 +15,16 @@ class Dashboard extends React.Component{
     }
 
     componentDidMount(){
+        this._isMounted = true;
         this.props.startGetShowings().then(() => {
-            this.setState(() => ({showingsGot: true}))
+            if(this._isMounted){
+                this.setState(() => ({showingsGot: true}))
+            }
         })
+    }
+
+    componentWillUnmount(){
+        this._isMounted = false;
     }
 
     render(){

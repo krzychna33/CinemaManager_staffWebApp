@@ -9,7 +9,7 @@ export class EditShowingPage extends React.Component {
         super();
         this.state = {
             gotMovies: false,
-            error: ''
+            errors: []
         }
     }
 
@@ -19,30 +19,47 @@ export class EditShowingPage extends React.Component {
         })
     }
 
-    onSubmit = (showing) => {
-        axiosInstance.patch(`/showings/${this.props.match.params.id}`, showing).then((res) => {
-            if(res.status === 200){
-                this.setState(() => ({
-                    error: ''
-                }))
-                this.props.history.push('/');
-            }
-        }).catch((e) => {
-            this.setState(() => ({
-                error: 'An error occured while editing showing in the database.'
+    onSubmit = (showing, error) => {
+        if(error){
+            this.setState((prevState) => ({
+                errors: [
+                    ...prevState.errors,
+                    error
+                ]
             }))
-        })
+        } else {
+            axiosInstance.patch(`/showings/${this.props.match.params.id}`, showing).then((res) => {
+                if(res.status === 200){
+                    this.setState(() => ({
+                        errors: []
+                    }))
+                    this.props.history.push('/');
+                }
+            }).catch((e) => {
+                this.setState((prevState) => ({
+                    errors: [
+                        ...prevState.errors,
+                        e.response.data.message
+                    ]
+                }))
+            })
+        }
     }
 
     render(){
-        console.log(this.props.showing)
         return(
             <div>
-                {this.state.gotMovies ? (
-                    <ShowingForm showing={this.props.showing} movies={this.props.movies} onSubmit={this.onSubmit}/>
-                ) : (
-                    <p>Loading</p>
-                )}
+                <h2>Edit showing</h2>
+                {
+                    this.state.errors.length > 0 && <p>{this.state.errors[this.state.errors.length-1]}</p>
+                }
+                {
+                    this.state.gotMovies ? (
+                        <ShowingForm showing={this.props.showing} movies={this.props.movies} onSubmit={this.onSubmit}/>
+                    ) : (
+                        <p>Loading</p>
+                    )
+                }
                 
             </div>
         )
