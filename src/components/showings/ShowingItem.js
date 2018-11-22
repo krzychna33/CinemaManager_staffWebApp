@@ -30,10 +30,18 @@ export class ShowingItem extends React.Component {
                     {this.props.showing.price/100}
                 </td>
                 <td>
+                    {
+                        this.props.showing.active == 1 ? <i className="material-icons">check_circle_outline</i> : <i className="material-icons">highlight_off</i>
+                    }
+                </td>
+                <td>
                 <Link to={`/edit-showing/${this.props.showing.id}`}><button>Edit</button></Link>
                 </td>
                 <td>
                     <button onClick={this.onRemoveButtonClick}>Remove</button>
+                </td>
+                <td>
+                    <Link to={`/show-reservations/${this.props.showing.id}`}><button>Show reservations</button></Link>
                 </td>
             </tr>
         )

@@ -1,6 +1,7 @@
 import React from 'react';
 import { DateTimePicker } from 'material-ui-pickers';
 import moment from 'moment';
+import Switch from '@material-ui/core/Switch';
 
 export default class ShowingForm extends React.Component {
     constructor(props){
@@ -10,7 +11,8 @@ export default class ShowingForm extends React.Component {
             startTime: props.showing ? moment(props.showing.showingTime) : moment(),
             endTime: props.showing ? moment(props.showing.showingEndTime) : moment().add(2, 'hours'),
             price: props.showing ? (props.showing.price/100).toString() : '',
-            movieId: props.showing ? props.showing.movie_id : 1
+            movieId: props.showing ? props.showing.movie_id : 1,
+            active: props.showing ? props.showing.active : 1
         }
     }
 
@@ -43,6 +45,11 @@ export default class ShowingForm extends React.Component {
             movieId: selectFieldValue
         }))
     }
+    
+    onActiveChange = (e) => {
+        const active = e.target.checked ? 1 : 0;
+        this.setState(() => ({active}))
+    }
 
     onSubmit = (e) => {
         e.preventDefault();
@@ -54,7 +61,8 @@ export default class ShowingForm extends React.Component {
                 movie_id: this.state.movieId,
                 showingEndTime: this.state.endTime.format("YYYY-MM-DD HH:mm:ss"),
                 showingTime: this.state.startTime.format("YYYY-MM-DD HH:mm:ss"),
-                price: parseFloat(this.state.price, 10) * 100
+                price: parseFloat(this.state.price, 10) * 100,
+                active: this.state.active
             })
         }
     }
@@ -85,6 +93,10 @@ export default class ShowingForm extends React.Component {
                         placeholder="Price"
                         value={this.state.price}
                         onChange={this.onPriceHandle}
+                    />
+                    <Switch
+                        checked={this.state.active == 1 ? true : false}
+                        onChange={this.onActiveChange}
                     />
                     <button>Save showing</button>
                 </form>

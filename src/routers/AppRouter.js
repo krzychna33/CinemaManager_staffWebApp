@@ -8,6 +8,7 @@ import AddShowingPage from '../components/showings/AddShowingPage';
 import EditShowingPage from '../components/showings/EditShowingPage';
 import AddMoviePage from '../components/movies/AddMoviePage';
 import EditMoviePage from '../components/movies/EditMoviePage';
+import ShowingReservationsPage from '../components/showings/reservations/ShowingReservationsPage';
 
 export const history = createHistory();
 
@@ -21,6 +22,7 @@ const AppRouter = () => (
                 <Route path="/movies" component={MoviesDashboard}/>
                 <Route path="/add-showing" component={AddShowingPage}/>
                 <Route path="/edit-showing/:id" component={EditShowingPage}/>
+                <Route path="/show-reservations/:id" component={ShowingReservationsPage}/>
                 <Route path="/add-movie" component={AddMoviePage}/>
                 <Route path="/edit-movie/:id" component={EditMoviePage}/>
             </Switch>

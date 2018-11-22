@@ -13,8 +13,10 @@ const ShowingsList = (props) => (
                     <th>Movie title</th>
                     <th>Showing time</th>
                     <th>Price</th>
+                    <th>Active</th>
                     <th>Edit</th>
                     <th>Remove</th>
+                    <th>Show reservations</th>
                 </tr>
             </thead>
             <tbody>
