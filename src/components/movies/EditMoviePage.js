@@ -48,6 +48,7 @@ export default class EditMoviePage extends React.Component {
         }
     }
 
+
     render(){
         return (
             <div>

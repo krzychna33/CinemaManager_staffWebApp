@@ -6,12 +6,13 @@ import Switch from '@material-ui/core/Switch';
 export default class ShowingForm extends React.Component {
     constructor(props){
         super();
+        const movieId = props.movies.length > 0 ? props.movies[0].id : ''
         this.state = {
             showingId: props.showing ? props.showing.id : '',
             startTime: props.showing ? moment(props.showing.showingTime) : moment(),
             endTime: props.showing ? moment(props.showing.showingEndTime) : moment().add(2, 'hours'),
             price: props.showing ? (props.showing.price/100).toString() : '',
-            movieId: props.showing ? props.showing.movie_id : 1,
+            movieId: props.showing ? props.showing.movie_id : movieId,
             active: props.showing ? props.showing.active : 1
         }
     }
