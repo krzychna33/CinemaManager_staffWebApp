@@ -42,15 +42,16 @@ class LoginPage extends React.Component {
 
     render(){
         return (
-            <div>
-                <h1>Welcome to CinemaStaff panel!</h1>
-                <p>Please log in.</p>
-                {
-                    this.state.errors.length > 0 && <p>{this.state.errors[this.state.errors.length-1]}</p>
-                }
-                <LoginForm onSubmit={this.onSubmit}/>
-
-                <p>CinemaStaff v.0.1 | krzychnadev</p>
+            <div className="login__wrapper">
+                <div className="login__box">
+                    {
+                        this.state.errors.length > 0 && <div class="alert alert-danger" role="alert">{this.state.errors[this.state.errors.length-1]}</div>
+                    }
+                    <h1>Welcome to CinemaStaff panel!</h1>
+                    <p>Please log in.</p>
+                    <LoginForm onSubmit={this.onSubmit}/>
+                    <p>CinemaStaff v.0.1 | krzychnadev</p>
+                </div>
             </div>
         )
     }
