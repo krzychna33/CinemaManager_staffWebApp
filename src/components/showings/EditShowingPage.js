@@ -33,7 +33,7 @@ export class EditShowingPage extends React.Component {
                     this.setState(() => ({
                         errors: []
                     }))
-                    this.props.history.push('/');
+                    this.props.history.push('/dashboard');
                 }
             }).catch((e) => {
                 this.setState((prevState) => ({
