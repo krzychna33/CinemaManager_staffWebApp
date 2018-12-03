@@ -4,6 +4,9 @@
 
 I know, this project has some bugs and some things could be better 😎. Please keep in mind that, the main idea of this was to learn react, redux framework. Cheers! :) 👌😄
 
+## Running:
+1). Set up jwt public key in /src/config/jwt/public.js
+
 ## About CinemaManager Project
 
 It is schoolarship project.
