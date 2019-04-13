@@ -30,7 +30,7 @@ export default class LoginForm extends React.Component {
 
     render(){
         return (
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit} className="form__box">
                 <div className="form-group">
                     <input className="form-control" name="email" type="text" placeholder="Email" value={this.state.email} onChange={this.onChange}/>
                 </div>
@@ -38,7 +38,7 @@ export default class LoginForm extends React.Component {
                     <input className="form-control" name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.onChange}/>
                 </div>
                 <div className="form-group">
-                    <button className="btn btn-ligh login__button">Login</button>
+                    <button className="btn btn-light login__button">Login</button>
                 </div>
                 
             </form>

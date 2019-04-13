@@ -1,0 +1,8 @@
+.showingList{
+    display: flex;
+    flex-direction: column;
+    h2{
+        padding: $s-size;
+        font-size: $l-size;
+    }
+}

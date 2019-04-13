@@ -50,7 +50,7 @@ class LoginPage extends React.Component {
                     <h1>Welcome to CinemaStaff panel!</h1>
                     <p>Please log in.</p>
                     <LoginForm onSubmit={this.onSubmit}/>
-                    <p>CinemaStaff v.0.1 | krzychnadev</p>
+                    <p className="footer__signature">CinemaStaff v.0.1 | krzychnadev</p>
                 </div>
             </div>
         )

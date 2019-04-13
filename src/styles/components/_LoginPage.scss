@@ -4,19 +4,36 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: url('/images/5.jpg');
 }
 
 .login__box{
+    color: white;
+    @media screen and (max-width: $break-small) {
+        width: 75%;
+    }
     width: 25%;
-    background: #eeededbd;
-    padding: $m-size;
-    border-radius: 3px;
+    background: #1E3040;
+    padding: $xl-size;
+    border-radius: 5px;
     text-align: center;
     input{
         font-size: $font-m;
     }
 }
 
+.form__box{
+    margin-top: $l-size;
+}
+
 .login__button {
-    font-size: $font-m
+    margin-top: $m-size;
+    margin-bottom: $l-size;
+    font-size: $font-m;
+    padding-left: $l-size;
+    padding-right: $l-size;
+}
+
+.footer__signature{
+    font-weight: 300;
 }

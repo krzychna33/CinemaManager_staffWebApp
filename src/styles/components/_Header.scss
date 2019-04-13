@@ -1,0 +1,33 @@
+.header__bar {
+    background: #1E3040;
+    color: white;
+    padding: $m-size;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__innerBar{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__title{
+    @media screen and (max-width: $break-small) {
+        display: none;
+    }
+    margin-right: $l-size;
+    font-weight: 700;
+}
+
+.header__link{
+    margin: $s-size;
+}
+
+.header__logout{
+    border: none;
+    background: none;
+    color: white;
+}

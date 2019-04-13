@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import axiosInstance from '../../config/axios';
 import {connect} from 'react-redux';
+import moment from 'moment'
+import numeral from 'numeral'
 import {startGetShowings} from '../../actions/showings';
 
 export class ShowingItem extends React.Component {
@@ -16,34 +18,24 @@ export class ShowingItem extends React.Component {
 
     render(){
         return (
-            <tr>
-                <td>
-                    {this.props.showing.id}
-                </td>
-                <td>
-                    {this.props.showing.movieTitle}
-                </td>
-                <td>
-                    {this.props.showing.showingTime}
-                </td>
-                <td>
-                    {this.props.showing.price/100}
-                </td>
-                <td>
-                    {
-                        this.props.showing.active == 1 ? <i className="material-icons">check_circle_outline</i> : <i className="material-icons">highlight_off</i>
+            <div className="showingItem__wrapper">
+                <div className="showingItem__upperBar">
+                    <h3>{this.props.showing.movieTitle}</h3>
+                    <p>ID: {this.props.showing.id}</p>
+                </div>
+                <p>{moment(this.props.showing.showingTime).format("dddd, MMMM Do YYYY, HH:mm")}</p>
+                <p>Price: {numeral(this.props.showing.price/100).format('$0,0.00')}</p>
+                <div className="showingItem__activityStatus">
+                    Active: {
+                        this.props.showing.active == 1 ? <i className="material-icons showingItem__active">check_circle_outline</i> : <i className="material-icons showingItem__inactive">highlight_off</i>
                     }
-                </td>
-                <td>
-                <Link to={`/edit-showing/${this.props.showing.id}`}><button>Edit</button></Link>
-                </td>
-                <td>
-                    <button onClick={this.onRemoveButtonClick}>Remove</button>
-                </td>
-                <td>
-                    <Link to={`/show-reservations/${this.props.showing.id}`}><button>Show reservations</button></Link>
-                </td>
-            </tr>
+                </div>
+                <div className="showingItem__buttonsBox">
+                    <Link to={`/edit-showing/${this.props.showing.id}`}><button className="btn btn-primary showingItem__button">Edit</button></Link>
+                    <Link to={`/show-reservations/${this.props.showing.id}`}><button className="btn btn-primary showingItem__button">Show reservations</button></Link>
+                    <button onClick={this.onRemoveButtonClick} className="btn btn-danger showingItem__button">Remove</button>
+                </div>
+            </div>
         )
     }
 }
