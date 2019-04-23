@@ -4,7 +4,7 @@ import selectShowings from '../../selectors/showings';
 import ShowingItem from './ShowingItem';
 
 const ShowingsList = (props) => (
-    <div className="showingList">
+    <div className="showingsList">
         <h2>Showing list: </h2>
             <div>
                 {props.showings.map((showing) => {

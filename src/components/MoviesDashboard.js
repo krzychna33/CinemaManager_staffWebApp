@@ -29,7 +29,7 @@ class MoviesDashboard extends React.Component {
     render(){
         return(
             <div className="dashboard__wrapper">
-                <Link to="/add-movie">Add Movie</Link>
+                <Link to="/add-movie" className="btn btn-primary button">Add Movie</Link>
                 {this.state.gotMovies ? <MoviesList/> : <p>Loading</p>}
             </div>
         )

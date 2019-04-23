@@ -70,21 +70,22 @@ export default class ShowingForm extends React.Component {
 
     render(){
         return(
-            <div>
-                <form onSubmit={this.onSubmit}>
-                    <DateTimePicker
-                        autoOk
-                        ampm={false}
-                        value={this.state.startTime}
-                        onChange={this.onStartTimeChange}
-                    />
-                    <DateTimePicker
-                        autoOk
-                        ampm={false}
-                        value={this.state.endTime}
-                        onChange={this.onEndTimeChange}
-                    />
-                    <select value={this.state.movieId} onChange={this.onMovieChange}>
+                <form onSubmit={this.onSubmit} className="showingForm__form">
+                    <div className="showingForm__datePickerWrapper">
+                        <DateTimePicker
+                            autoOk
+                            ampm={false}
+                            value={this.state.startTime}
+                            onChange={this.onStartTimeChange}
+                        />
+                        <DateTimePicker
+                            autoOk
+                            ampm={false}
+                            value={this.state.endTime}
+                            onChange={this.onEndTimeChange}
+                        />
+                    </div>
+                    <select value={this.state.movieId} onChange={this.onMovieChange} className="select">
                         {this.props.movies.map((movie) => {
                             return <option key={movie.id} value={movie.id}>{movie.title}</option>
                         })}
@@ -92,6 +93,7 @@ export default class ShowingForm extends React.Component {
                     <input
                         type="text"
                         placeholder="Price"
+                        className="textInput"
                         value={this.state.price}
                         onChange={this.onPriceHandle}
                     />
@@ -99,9 +101,8 @@ export default class ShowingForm extends React.Component {
                         checked={this.state.active == 1 ? true : false}
                         onChange={this.onActiveChange}
                     />
-                    <button>Save showing</button>
+                    <button className="btn btn-success button">Save showing</button>
                 </form>
-            </div>
         )
     }
 }

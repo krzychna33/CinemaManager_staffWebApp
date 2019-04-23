@@ -16,17 +16,17 @@ export class MovieItem extends React.Component {
 
     render(){
         return(
-            <tr>
-                <td>{this.props.movie.id}</td>
-                <td>{this.props.movie.title}</td>
-                <td>{this.props.movie.year}</td>
-                <td>
-                    <Link to={`/edit-movie/${this.props.movie.id}`}><button>Edit</button></Link>
-                </td>
-                <td>
-                    <button onClick={this.onRemoveButtonClick}>Remove</button>
-                </td>
-            </tr>
+            <div className="movieItem__wrapper">
+                <div className="movieItem__upperBar">
+                    <h3>{this.props.movie.title}</h3>
+                    <p>ID: {this.props.movie.id}</p>
+                </div>
+                <p>{this.props.movie.year}</p>
+                <div className="movieItem__buttonsBox">
+                    <Link to={`/edit-movie/${this.props.movie.id}`}><button className="btn btn-primary movieItem__button">Edit</button></Link>
+                    <button onClick={this.onRemoveButtonClick} className="btn btn-danger movieItem__button">Remove</button>
+                </div>
+            </div>
         )
     }
 }

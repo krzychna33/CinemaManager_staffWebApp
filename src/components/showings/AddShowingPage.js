@@ -54,11 +54,15 @@ export class AddShowingPage extends React.Component {
             <div>
                 <h2>Add new showing</h2>
                 {
-                    this.state.errors.length > 0 && <p>{this.state.errors[this.state.errors.length-1]}</p>
-                }
-                {
                     this.state.moviesGot ? (
-                        <ShowingForm movies={this.props.movies} onSubmit={this.onSubmit}/>
+                        <div className="contentContainer">
+                        <div className="contentContainer__error">
+                            {
+                                this.state.errors.length > 0 && <p>{this.state.errors[this.state.errors.length-1]}</p>
+                            }
+                        </div>
+                            <ShowingForm movies={this.props.movies} onSubmit={this.onSubmit}/>
+                        </div>
                     ) : (
                         <p>Loading</p>
                     )

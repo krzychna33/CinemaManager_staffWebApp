@@ -30,7 +30,7 @@ class Dashboard extends React.Component{
     render(){
         return (
             <div className="dashboard__wrapper">
-                <Link to="/add-showing" className="btn btn-primary dashboard__button">Add showing</Link>
+                <Link to="/add-showing" className="btn btn-primary button">Add showing</Link>
                 {
                     this.state.showingsGot ? (
                         <ShowingsList/>

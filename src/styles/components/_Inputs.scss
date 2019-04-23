@@ -1,0 +1,21 @@
+.textInput {
+    border: 1px solid #cacccd;
+    height: 50px;
+    font-size: $m-size;
+    font-weight: 300;
+    padding: $s-size;
+}
+
+.select {
+    @extend .textInput;
+}
+
+.button {
+    font-size: $m-size;
+    margin: $s-size;
+    padding: $s-size;
+}
+
+.datePicker{
+    font-size: $l-size;
+}
