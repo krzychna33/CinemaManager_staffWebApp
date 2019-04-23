@@ -5,8 +5,8 @@
 ## It is an app for learning purpouses. It is a system for seats reservation in cinema (Like a cinemacity app). This repo contains only front end for cinema staff which can be use to manage showings, movies and reservations.
 
 Web app features:
-..* cinema employees can: Manage showing (adding, removing, editing), manage movies (adding, removing, editing)
-..* browse reservations (with e-mail fliter)
+* cinema employees can: Manage showing (adding, removing, editing), manage movies (adding, removing, editing)
+* browse reservations (with e-mail fliter)
 
 I know, this project has some bugs and some things could be better 😎. Please keep in mind that, the main idea of this was to learn react, redux framework. Cheers! :) 👌😄
 
