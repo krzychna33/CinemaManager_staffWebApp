@@ -2,4 +2,4 @@
 /public/bundle.js
 /public/bundle.map.js
 /public/bundle.js.map
-
+src/config/jwt/public.js
