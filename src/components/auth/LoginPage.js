@@ -48,7 +48,7 @@ class LoginPage extends React.Component {
                         this.state.errors.length > 0 && <div class="alert alert-danger" role="alert">{this.state.errors[this.state.errors.length-1]}</div>
                     }
                     <h1>Welcome to CinemaStaff panel!</h1>
-                    <p>Please log in.</p>
+                    <p>Please log in. (l: admin@admin.com; h: admin)</p>
                     <LoginForm onSubmit={this.onSubmit}/>
                     <p className="footer__signature">CinemaStaff v.0.1 | krzychnadev</p>
                 </div>
